@@ -8,8 +8,7 @@ defmodule Api.Application do
   @impl true
   def start(_type, _args) do
     children = [
-      # Starts a worker by calling: Api.Worker.start_link(arg)
-      # {Api.Worker, arg}
+     {Plug.Cowboy, scheme: :http, plug: MyAPI.Router, options: [port: 4000]}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
