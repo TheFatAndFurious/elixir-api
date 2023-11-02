@@ -8,7 +8,7 @@ defmodule Api.Application do
   @impl true
   def start(_type, _args) do
     children = [
-     {Plug.Cowboy, scheme: :http, plug: MyAPI.Router, options: [port: 4000]}
+      Api.Repo,
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
