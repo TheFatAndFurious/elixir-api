@@ -26,7 +26,8 @@ defmodule Api.MixProject do
       {:plug_cowboy, "~> 2.0"},
       {:cowboy, "~>2.10"},
       {:ecto_sql, "~> 3.0"},
-      {:postgrex, ">= 0.0.0"}
+      {:postgrex, ">= 0.0.0"},
+      {:jason, "~> 1.4.1"}
     ]
   end
 end
