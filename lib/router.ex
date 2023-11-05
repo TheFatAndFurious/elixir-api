@@ -16,7 +16,7 @@ defmodule MyAPI.Router do
     |> Enum.map(fn person ->
       %{
       first_name: person.first_name,
-      age: person.age
+      email: person.email
       }
     end)
     |> Jason.encode!
@@ -31,7 +31,8 @@ get "/people/:id" do
     nil -> send_resp(conn, 404, "Not Found")
     person -> json_data = %{
       first_name: person.first_name,
-      age: person.age
+      email: person.email,
+      role_id: person.role_id
     }
 
     case Jason.encode(json_data) do
