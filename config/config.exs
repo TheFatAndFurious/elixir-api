@@ -7,3 +7,9 @@ config :api, Api.Repo,
   username: "postgres",
   password: "123",
   hostname: "localhost"
+
+config :api, Api.Guardian,
+  issuer: "api",
+  secret_key: System.get_env("GUARDIAN_SECRET_KEY")
+
+config :logger, level: :debug

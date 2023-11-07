@@ -27,7 +27,8 @@ defmodule Api.MixProject do
       {:cowboy, "~>2.10"},
       {:ecto_sql, "~> 3.0"},
       {:postgrex, ">= 0.0.0"},
-      {:jason, "~> 1.4.1"}
+      {:jason, "~> 1.4.1"},
+      {:guardian, "~>2.0"}
     ]
   end
 end
