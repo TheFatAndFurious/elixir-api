@@ -6,4 +6,10 @@ defmodule Api.Picture do
     many_to_many :galleries, Api.Gallery, join_through: "pictures_galleries"
     timestamps()
   end
+
+  def map_resource(picture) do
+    %{
+      url: picture.url,
+    }
+  end
 end

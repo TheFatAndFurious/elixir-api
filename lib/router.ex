@@ -2,24 +2,46 @@ defmodule MyAPI.Router do
   require Logger
   use Plug.Router
 
+  alias Handlers.GenericHandlers
+
   plug :match
   plug :dispatch
   plug Plug.Logger
 
-  get "/" do
-    send_resp(conn, 200, "Welcome to the API")
-  end
+   get "/peoples",  do: GenericHandlers.list_resources(conn, Api.Person)
 
-  # Structures endpoints
-  get "/structures" do
-    # Here you would normally fetch structures from the database
-    json_response = %{message: "List of structures would be here."}
-    |> Jason.encode!()
+   get "/pictures", do: GenericHandlers.list_resources(conn, Api.Picture)
 
-    conn
-    |> put_resp_content_type("application/json")
-    |> send_resp(200, json_response)
-  end
+   get "/roles", do: GenericHandlers.list_resources(conn, Api.Role)
+
+   get "/galleries", do: GenericHandlers.list_resources(conn, Api.Gallery)
+
+   get "/groups", do: GenericHandlers.list_resources(conn, Api.Group)
+
+   get "PictureGalleries", do: GenericHandlers.list.resources(conn, Api.CreatePicturesGalleries)
+
+
+
+
+  # get "/people" do
+  #   people = Api.Repo.all(Api.Person)
+  #   json_response =
+  #     people
+  #     |> Enum.map(fn person ->
+  #       %{
+  #         first_name: person.first_name,
+  #       email: person.email
+  #       }
+  #     end)
+  #     |> Jason.encode!()
+  #     IO.inspect(conn, label: "after JSON.encode")
+  #   conn
+  #   |> put_resp_header("Content-Type", "application/json")
+  #   IO.inspect(conn, label: "after resp_header")
+  #   |> send_resp(200, json_response)
+  #   IO.inspect(conn, label: "after response")
+
+  # end
 
   get "/structures/:id" do
     # Here you would normally fetch a single structure by ID from the database

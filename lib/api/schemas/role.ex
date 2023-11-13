@@ -12,4 +12,10 @@ defmodule Api.Role do
     |> Ecto.Changeset.cast(params, [:name])
     |> Ecto.Changeset.validate_required([:name])
   end
+
+  def map_resource(role) do
+    %{
+      role: role.name
+    }
+  end
 end

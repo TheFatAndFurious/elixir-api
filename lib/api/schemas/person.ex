@@ -15,4 +15,13 @@ defmodule Api.Person do
     |> Ecto.Changeset.cast(params, [:first_name, :last_name, :email, :role_id])
     |> Ecto.Changeset.validate_required([:first_name, :last_name])
   end
+
+  def map_resource(person) do
+    %{
+      first_name: person.first_name,
+      email: person.email,
+      #role_id: person.role,
+      last_name: person.last_name,
+    }
+  end
 end

@@ -6,4 +6,10 @@ defmodule Api.Group do
     many_to_many :people, Api.Person, join_through: "people_groups"
     timestamps()
   end
+
+  def map_resource(group) do
+    %{
+     name: group.name
+    }
+  end
 end
